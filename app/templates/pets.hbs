@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-4">
+    {{#each model as |pet|}}
+      <ul class="nav">
+        <li class="nav-item">
+          {{#link-to 'pets.edit' pet.id class='nav-link'}}
+            {{pet.name}}
+          {{/link-to}}
+        </li>
+      </ul>
+    {{/each}}
+  </div>
+
+  <div class="col-sm-8">
+    {{outlet}}
+  </div>
+</div>

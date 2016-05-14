@@ -1,0 +1,11 @@
+<label for="{{elementId}}-text-field">{{label}}</label>
+<div class="row">
+  <div class="col-sm-6">
+    <input
+      type="text"
+      class="form-control"
+      id="{{elementId}}-text-field"
+      value={{value}}
+      oninput={{action (mut value) value="currentTarget.value"}}>
+  </div>
+</div>
