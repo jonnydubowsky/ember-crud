@@ -19,6 +19,7 @@ export default function() {
   this.get('/pets/:id');
   this.post('/pets');
   this.patch('/pets/:id');
+  this.del('/pets/:id');
 
   this.logging = true;
 
