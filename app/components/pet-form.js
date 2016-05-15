@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   willDestroy() {
-    this.get('pet').rollback();
+    this.get('pet').rollbackAttributes();
   },
 
   actions: {
