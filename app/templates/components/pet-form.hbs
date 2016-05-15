@@ -1,0 +1,9 @@
+<form {{action 'save' model on="submit"}}>
+  {{text-field class="m-b-1" label="Name" value=pet.name}}
+
+  {{yield (hash
+    save=(action 'save')
+    cancel=(action 'cancel')
+    destroy=(action 'destroy')
+  )}}
+</form>

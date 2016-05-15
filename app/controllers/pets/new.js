@@ -6,6 +6,10 @@ export default Ember.Controller.extend({
       pet.save().then(() => {
         this.set('model', this.get('store').createRecord('pet'));
       });
+    },
+
+    cancel(pet) {
+      pet.rollback();
     }
   }
 });

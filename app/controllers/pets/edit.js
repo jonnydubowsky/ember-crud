@@ -8,6 +8,10 @@ export default Ember.Controller.extend({
       pet.destroyRecord().then(() => {
         this.transitionToRoute('pets.index');
       });
+    },
+
+    cancel(pet) {
+      pet.rollback();
     }
   }
 });

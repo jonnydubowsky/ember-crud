@@ -1,5 +1,6 @@
-<form {{action 'save' model on="submit"}}>
-  {{pet-fields pet=model}}
-
+{{#pet-form pet=model as |form|}}
   <button class="btn btn-primary">Create</button>
-</form>
+  <button {{action form.cancel}} class="btn btn-default">
+    Cancel
+  </button>
+{{/pet-form}}
