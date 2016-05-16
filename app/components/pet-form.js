@@ -1,13 +1,17 @@
 import Ember from 'ember';
+const { inject } = Ember;
 
 export default Ember.Component.extend({
-  willDestroy() {
-    this.get('pet').rollbackAttributes();
+  store: inject.service(),
+
+  init() {
+    this._super(...arguments);
+    this.changeSet = {};
   },
 
   actions: {
     save() {
-      this.get('pet').save();
+      this.get('store').createRecord('pet', this.changeSet).save();
     },
 
     destroy() {
@@ -17,7 +21,7 @@ export default Ember.Component.extend({
     },
 
     cancel() {
-      this.get('pet').rollbackAttributes();
+      this.set('changeSet', {});
     }
   }
 });

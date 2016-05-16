@@ -1,5 +1,9 @@
-<form {{action 'save' model on="submit"}}>
-  {{text-field class="m-b-1" label="Name" value=pet.name}}
+<form {{action 'save' on="submit"}}>
+  {{text-field
+    class="m-b-1"
+    label="Name"
+    value=(or changeSet.name pet.name)
+    onInput=(action (mut changeSet.name))}}
 
   {{yield (hash
     save=(action 'save')

@@ -27,6 +27,17 @@ collection of our data. We could change our UI to embrace this idea.
 * New -> Create
 * Save -> Update or Sync
 
-But what if we want the common web model?
+But what if we want the common web model? How can we work with Ember Data?
 
+New
+---
 
+Just a sandbox object, then create and save with the attributes. On server
+error you might end up with an unsaved record and your UI needs a way to
+resolve.
+
+Edit. We need another thing -- changeset. Look at pheonix.
+
+Buffered proxy.
+
+Avoid 2-way bindings.
