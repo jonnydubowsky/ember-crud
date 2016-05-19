@@ -2,8 +2,7 @@
   {{text-field
     class="m-b-1"
     label="Name"
-    value=(or changeSet.name pet.name)
-    onInput=(action (mut changeSet.name))}}
+    value=changeset.name}}
 
   {{yield (hash
     save=(action 'save')
