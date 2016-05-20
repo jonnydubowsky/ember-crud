@@ -23,6 +23,12 @@ export default function() {
 
   this.logging = true;
 
+  // Error on create
+  // this.post('/pets', undefined, 422);
+
+  // Error on update
+  // this.patch('/pets/:id', undefined, 422);
+
   /*
     Shorthand cheatsheet:
 
