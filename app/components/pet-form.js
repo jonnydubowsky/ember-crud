@@ -1,18 +1,19 @@
 import Ember from 'ember';
+const { inject } = Ember;
 
 export default Ember.Component.extend({
-  willDestroy() {
-    this.get('pet').rollback();
-  },
+  routing: inject.service('-routing'),
 
   actions: {
     save() {
-      this.get('pet').save();
+      this.get('pet').save().then((pet) => {
+        this.get('routing').transitionTo('pets.edit', [pet.get('id')]);
+      });
     },
 
     destroy() {
       this.get('pet').destroyRecord().then(() => {
-        this.transitionToRoute('pets.index');
+        this.get('routing').transitionTo('pets.index');
       });
     },
 
