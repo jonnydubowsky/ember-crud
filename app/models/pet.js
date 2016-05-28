@@ -1,6 +1,6 @@
-import DS from 'ember-data';
-const { attr } = DS;
+import Model from 'ember-orbit/model';
+import attr from 'ember-orbit/fields/attr';
 
-export default DS.Model.extend({
+export default Model.extend({
   name: attr()
 });
