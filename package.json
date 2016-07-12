@@ -23,7 +23,7 @@
     "broccoli-funnel": "^1.0.1",
     "broccoli-merge-trees": "^1.1.1",
     "ember-ajax": "0.7.1",
-    "ember-cli": "2.5.0",
+    "ember-cli": "2.6.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-dependency-checker": "^1.2.0",
@@ -39,7 +39,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
-    "ember-orbit": "git+https://github.com/orbitjs/ember-orbit.git#516b6d2c2b91778df9bb4f3da53f881463b734d2",
+    "ember-orbit": "git+https://github.com/orbitjs/ember-orbit.git#master",
     "ember-resolver": "^2.0.3",
     "loader.js": "^4.0.1"
   }

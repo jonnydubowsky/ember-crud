@@ -2,6 +2,8 @@ import Coordinator from 'orbit-common/coordinator';
 import JSONAPISource from 'orbit-common/jsonapi-source';
 import Orbit from 'orbit/main';
 import Ember from 'ember';
+import KeyMap from 'orbit-common/key-map';
+import RequestStrategy from 'orbit-common/strategies/request-strategy';
 
 export default {
   name: 'config-orbit',
@@ -11,7 +13,7 @@ export default {
 
     let coordinator = new Coordinator();
     let store = app.lookup('service:store').orbitStore;
-    let jsonAPISource = new JSONAPISource({ schema: store.schema });
+    let jsonAPISource = new JSONAPISource({ schema: store.schema, keyMap: new KeyMap() });
 
     coordinator.addNode('master', {
       sources: [store]
@@ -21,24 +23,24 @@ export default {
       sources: [jsonAPISource]
     });
 
-    coordinator.defineStrategy({
-      type: 'request',
+    new RequestStrategy({
+      coordinator,
       sourceNode: 'master',
       targetNode: 'upstream',
       sourceEvent: 'beforeUpdate',
-      targetRequest: 'transform',
+      targetRequest: 'update',
       blocking: true,
-      mergeTransforms: true
+      syncResults: true
     });
 
-    coordinator.defineStrategy({
-      type: 'request',
+    new RequestStrategy({
+      coordinator,
       sourceNode: 'master',
       targetNode: 'upstream',
       sourceEvent: 'beforeQuery',
       targetRequest: 'fetch',
       blocking: true,
-      mergeTransforms: true
+      syncResults: true
     });
   }
 };
