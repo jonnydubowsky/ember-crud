@@ -6,12 +6,12 @@ export default Ember.Component.extend({
   store: inject.service(),
 
   didReceiveAttrs() {
-    this.transaction = this.get('store').createTransaction();
+    //this.transaction = this.get('store').createTransaction();
 
     if (this.get('pet')) {
-      this.set('pet', this.transaction.cache.retrieveRecord('pet', this.get('pet.id')));
+      //this.set('pet', this.transaction.cache.retrieveRecord('pet', this.get('pet.id')));
     } else {
-      this.transaction.addRecord({ type: 'pet' }).then((pet) => {
+      this.get('store').addRecord({ type: 'pet' }).then((pet) => {
         this.set('pet', pet);
       });
     }
@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 
   actions: {
     save() {
-      this.transaction.commit().then(() => {
+      this.get('pet').save().then(() => {
         this.get('routing').transitionTo('pets.edit', [this.get('pet.id')]);
       });
     },
