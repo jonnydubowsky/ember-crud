@@ -1,4 +1,4 @@
-{{#pet-form as |form|}}
+{{#pet-form pet=model onSave=(route-action 'save' model) onCancel=(route-action 'cancel') as |form|}}
   <button class="btn btn-primary">Create</button>
   <button {{action form.cancel}} class="btn btn-default">
     Cancel
