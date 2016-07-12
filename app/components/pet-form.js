@@ -6,21 +6,15 @@ export default Ember.Component.extend({
   store: inject.service(),
 
   didReceiveAttrs() {
-    //this.transaction = this.get('store').createTransaction();
-
-    if (this.get('pet')) {
-      //this.set('pet', this.transaction.cache.retrieveRecord('pet', this.get('pet.id')));
-    } else {
-      this.get('store').addRecord({ type: 'pet' }).then((pet) => {
-        this.set('pet', pet);
-      });
+    if (!this.get('pet')) {
+      this.set('pet', { type: 'pet', name: '' });
     }
   },
 
   actions: {
     save() {
-      this.get('pet').save().then(() => {
-        this.get('routing').transitionTo('pets.edit', [this.get('pet.id')]);
+      this.get('store').addRecord(this.get('pet')).then((pet) => {
+        this.get('routing').transitionTo('pets.edit', [pet.get('id')]);
       });
     },
 
@@ -31,8 +25,7 @@ export default Ember.Component.extend({
     },
 
     cancel() {
-      this.transaction = this.get('store').createTransaction();
-      this.set('pet', this.transaction.cache.retrieveRecord('pet', this.get('pet.id')));
+      this.set('pet', { type: 'pet', name: '' });
     }
   }
 });

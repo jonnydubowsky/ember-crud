@@ -29,7 +29,7 @@ export default {
       targetNode: 'upstream',
       sourceEvent: 'beforeUpdate',
       targetRequest: 'update',
-      blocking: true,
+      blocking: false,
       syncResults: true
     });
 
